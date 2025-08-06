@@ -1,1 +1,1 @@
-const targetDate = new Date('August 5, 2025 18:00:00');
+const targetDate = new Date('August 12, 2025 18:00:00');
