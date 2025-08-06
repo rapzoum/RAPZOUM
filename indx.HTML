@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rap Zoum | راب زوم</title>
+    <style>
+        /* خطوط 4K عالية الجودة */
+        @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap');
+        
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #121212;
+            --accent-color: #1DB954;
+            --text-color: #FFFFFF;
+            --light-text: #B3B3B3;
+            --card-bg: #181818;
+            --section-padding: 4rem;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Almarai', sans-serif;
+            font-weight: 300;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* تصميم 4K متجاوب */
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 100vh;
+        }
+        
+        /* الشريط الجانبي بتأثيرات 4K */
+        .sidebar {
+            background-color: var(--secondary-color);
+            padding: 2rem 0;
+            position: fixed;
+            width: 300px;
+            height: 100vh;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+        }
+        
+        .logo-container {
+            padding: 0 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(29, 185, 84, 0.3));
+            transition: transform 0.5s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .menu {
+            list-style: none;
+            padding: 0 1.5rem;
+        }
+        
+        .menu li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .menu a {
+            display: flex;
+            align-items: center;
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .menu a:hover, .menu a.active {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            transform: translateX(-5px);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .menu a i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* المحتوى الرئيسي بدقة 4K */
+        .main-content {
+            grid-column: 2;
+            padding: var(--section-padding);
+            margin-right: 300px;
+            background: radial-gradient(circle at top right, #1a1a1a 0%, #000 100%);
+        }
+        
+        .section {
+            display: none;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-color), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(29, 185, 84, 0.2);
+        }
+        
+        /* بطاقات الحلقات بدقة عالية */
+        .episode-highlight {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .next-episode {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .countdown {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .countdown-item {
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        .episodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .episode-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .episode-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .episode-thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .episode-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .episode-content {
+            padding: 1.5rem;
+        }
+        
+        .episode-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .episode-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        /* قسم الريلز */
+        .shorts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .short-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .short-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .short-thumbnail {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        
+        .short-info {
+            padding: 1rem;
+        }
+        
+        .short-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .short-views {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        /* قسم الأخبار */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .news-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .news-excerpt {
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+        
+        .news-date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+        
+        /* قسم التواصل */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: #2a2a2a;
+            border: none;
+            border-radius: 8px;
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(29, 185, 84, 0.4);
+        }
+        
+        .contact-info {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .contact-method {
+            display: inline-flex;
+            align-items: center;
+            margin: 0 1.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            color: var(--accent-color);
+        }
+        
+        .contact-method i {
+            margin-left: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        /* تأثيرات 4K وإضافات */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .gradient-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(29, 185, 84, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        /* إضافة أنماط للشعار الصغير */
+        .small-logo {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 2;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .episode-card:hover .small-logo,
+        .short-card:hover .small-logo,
+        .news-card:hover .small-logo {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* أنماط الريل المدمج */
+        .instagram-reel {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .reel-header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .reel-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+        
+        .reel-username {
+            font-weight: 500;
+        }
+        
+        .reel-container {
+            position: relative;
+            padding-bottom: 177.77%; /* نسبة 9:16 */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .reel-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .reel-caption {
+            padding: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .reel-meta {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem 1rem;
+            color: var(--light-text);
+            font-size: 0.8rem;
+        }
+        
+        /* تصميم متجاوب لجميع الشاشات */
+        @media (max-width: 1600px) {
+            .container {
+                grid-template-columns: 250px 1fr;
+            }
+            
+            .sidebar {
+                width: 250px;
+            }
+            
+            .main-content {
+                margin-right: 250px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .episodes-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .news-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 1rem 0;
+            }
+            
+            .main-content {
+                margin-right: 0;
+                grid-column: 1;
+                padding: 2rem;
+            }
+            
+            .logo-container {
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+            
+            .logo {
+                max-width: 150px;
+            }
+            
+            .menu {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .menu li {
+                margin: 0.5rem;
+            }
+            
+            .menu a {
+                padding: 0.6rem 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .episodes-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                padding: 2rem;
+            }
+            
+            .contact-methods {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .contact-method {
+                margin: 0;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .main-content {
+                padding: 1.5rem;
+            }
+            
+            .episode-highlight {
+                padding: 1.5rem;
+            }
+            
+            .next-episode {
+                font-size: 1.2rem;
+            }
+            
+            .countdown {
+                gap: 1rem;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
+            .contact-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- تأثيرات الجسيمات الخلفية -->
+    <div class="particles" id="particles-js"></div>
+    <div class="gradient-overlay"></div>
+    
+    <div class="container">
+        <!-- الشريط الجانبي -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Logo" class="logo">
+            </div>
+            
+            <ul class="menu">
+                <li><a href="#" class="active" data-section="battle"><i class="fas fa-microphone-alt"></i>  معاد باتل راب </a></li>
+                <li><a href="#" data-section="episodes"><i class="fas fa-list-ul"></i> حلقات السركل</a></li>
+                <li><a href="#" data-section="shorts"><i class="fas fa-play-circle"></i>  زون ريلز</a></li>
+                <li><a href="#" data-section="news"><i class="far fa-newspaper"></i> أخبا زون</a></li>
+                <li><a href="#" data-section="contact"><i class="fas fa-envelope"></i>  للتواصل</a></li>
+            </ul>
+        </div>
+        
+        <!-- المحتوى الرئيسي -->
+        <div class="main-content">
+            <!-- قسم باتل فري -->
+            <div class="section active" id="battle">
+                <div class="section-header">
+                    <h2 class="section-title">باتل راب</h2>
+                </div>
+                
+                <div class="episode-highlight">
+                    <div class="next-episode">
+                        <i class="fas fa-clock"></i> الحلقة القادمة: الثلاثاء 12 أغسطس 2025 - 6:00 مساءً
+                    </div>
+                    
+                    <div class="countdown">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">00</div>
+                            <div class="countdown-label">أيام</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">ساعات</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">دقائق</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">ثواني</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 2rem 0 1.5rem; font-size: 1.5rem;">الحلقات السابقة</h3>
+                
+                <div class="episodes-grid">
+                    <div class="episode-card">
+                        <img src="https://via.placeholder.com/500x300" alt="الحلقة 24" class="episode-thumbnail">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="episode-badge">جديد</div>
+                        <div class="episode-content">
+                            <h4 class="episode-title">الحلقة القادمة: الثلاثاء 12 أغسطس 2025 - 6:00 مساءً</h4>
+                            <div class="episode-meta">
+                                <span>6 أغسطس 2025</span>
+                                <span>0مشاهدة</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="episode-card">
+                        <img src="https://via.placeholder.com/500x300" alt="الحلقة 23" class="episode-thumbnail">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="episode-content">
+                            <h4 class="episode-title">لسا مفيش سركل</h4>
+                            <div class="episode-meta">
+                                <span>لسا مفيش </span>
+                                <span>0 مشاهدة</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="episode-card">
+                        <img src="https://via.placeholder.com/500x300" alt="الحلقة 22" class="episode-thumbnail">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="episode-content">
+                            <h4 class="episode-title">لسا مفيش سركل</h4>
+                            <div class="episode-meta">
+                                <span>لسا مفيش  </span>
+                                <span>0 مشاهدة</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- قسم الحلقات -->
+            <div class="section" id="episodes">
+                <div class="section-header">
+                    <h2 class="section-title">حلقات ستايل</h2>
+                </div>
+                
+                <div class="episodes-grid">
+                    <div class="episode-card">
+                        <img src="https://via.placeholder.com/500x300" alt="الحلقة 15" class="episode-thumbnail">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="episode-content">
+                            <h4 class="episode-title"> الحلقة القادمة: الثلاثاء 12 أغسطس 2025 - 6:00 مساءً  </h4>
+                            <div class="episode-meta">
+                                <span>أغسطس 6 يوم الثلاثاء</span>
+                                <span>0 مشاهدة</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="episode-card">
+                        <img src="https://via.placeholder.com/500x300" alt="الحلقة 14" class="episode-thumbnail">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="episode-content">
+                            <h4 class="episode-title">لسا مفيش حلقات</h4>
+                            <div class="episode-meta">
+                                <span>لسا  </span>
+                                <span>0 مشاهدة</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="episode-card">
+                        <img src="https://via.placeholder.com/500x300" alt="الحلقة 13" class="episode-thumbnail">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="episode-content">
+                            <h4 class="episode-title"> لسا مفيش حلقات  </h4>
+                            <div class="episode-meta">
+                                <span>لسا</span>
+                                <span>0 مشاهدة</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- قسم الريلز -->
+            <div class="section" id="shorts">
+                <div class="section-header">
+                    <h2 class="section-title">راب زون ريلز</h2>
+                </div>
+                
+                <!-- الريل الأول -->
+                <div class="instagram-reel">
+                    <div class="reel-header">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum" class="reel-avatar">
+                        <span class="reel-username">rap_zoum</span>
+                    </div>
+                    
+                    <div class="reel-container">
+                        <iframe class="reel-iframe" src="https://www.instagram.com/reel/DMgcdqwN51i/embed" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="reel-caption">
+                        أفضل لحظات باتل فري هذا الأسبوع! تابعونا لمشاهدة المزيد من الريلز الحصرية.
+                    </div>
+                    
+                    <div class="reel-meta">
+                        <span><i class="far fa-heart"></i> 53</span>
+                        <span><i class="far fa-comment"></i> 52</span>
+                        <span><i class="far fa-bookmark"></i> حفظ</span>
+                    </div>
+                </div>
+                
+                <!-- بقية الريلز -->
+                <div class="shorts-grid">
+                    <div class="short-card">
+                        <img src="https://via.placeholder.com/250x350" alt="ريلز 1" class="short-thumbnail">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="short-info">
+                            <h4 class="short-title">لسا مفيش تصوير</h4>
+                            <div class="short-views">0 مشاهدة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="short-card">
+                        <img src="https://via.placeholder.com/250x350" alt="ريلز 2" class="short-thumbnail">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="short-info">
+                            <h4 class="short-title">لسا مفيش تصوير</h4>
+                            <div class="short-views">0 مشاهدة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="short-card">
+                        <img src="https://via.placeholder.com/250x350" alt="ريلز 3" class="short-thumbnail">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="short-info">
+                            <h4 class="short-title"> لسا مفيش تصوير </h4>
+                            <div class="short-views">0 مشاهدة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="short-card">
+                        <img src="https://via.placeholder.com/250x350" alt="ريلز 4" class="short-thumbnail">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="short-info">
+                            <h4 class="short-title">لسا مفيش تصوير</h4>
+                            <div class="short-views">0 مشاهدة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- قسم الأخبار -->
+            <div class="section" id="news">
+                <div class="section-header">
+                    <h2 class="section-title">أخبار راب زون</h2>
+                </div>
+                
+                <div class="news-grid">
+                    <div class="news-card">
+                        <img src="https://via.placeholder.com/600x400" alt="خبر 1" class="news-image">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="news-content">
+                            <h3 class="news-title">لسا مفيش اخبار</h3>
+                            <p class="news-excerpt">لسا مفيش اخبار              ...</p>
+                            <div class="news-date">لسا مفيش اخبار </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://via.placeholder.com/600x400" alt="خبر 2" class="news-image">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="news-content">
+                            <h3 class="news-title">لسا مفيش اخبار </h3>
+                            <p class="news-excerpt">لسا مفيش اخبار </p>
+                            <div class="news-date">لسا مفيش اخبار </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://via.placeholder.com/600x400" alt="خبر 3" class="news-image">
+                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
+                        <div class="news-content">
+                            <h3 class="news-title">لسا مفيش اخبار </h3>
+                            <p class="news-excerpt"> لسا مفيش اخبار </p>
+                            <div class="news-date">لسا مفيش اخبار </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- قسم التواصل -->
+            <div class="section" id="contact">
+                <div class="section-header">
+                    <h2 class="section-title">للتواصل معنا</h2>
+                </div>
+                
+                <div class="contact-container">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">اسم الكريم</label>
+                            <input type="text" id="name" placeholder="ادخل اسمك هنا">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">البريدك الإلكتروني</label>
+                            <input type="email" id="email" placeholder="ادخل بريدك الإلكتروني">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">رابر و بروديوسر</label>
+                            <input type="text" id="subject" placeholder="موضوع الرسالة">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">رسالتك</label>
+                            <textarea id="message" placeholder="اكتب رسالتك هنا..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                        </button>
+                    </form>
+                    
+                    <div class="contact-info">
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">تواصل معنا مباشرة</h3>
+                            <div class="contact-methods">
+                                <a href="mailto:rapzoum@example.com" class="contact-method">
+                                    <i class="fas fa-envelope"></i> rapzoum@example.com
+                                </a>
+                                <a href="tel:+20123456789" class="contact-method">
+                                    <i class="fas fa-phone"></i> 
+                                </a>
+                                <a href="https://www.whatsapp.com/channel/0029VbBVaT6F6smtLJQZo73r" class="contact-method">
+                                    <i class="fab fa-whatsapp"></i> واتساب
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مكتبات JavaScript -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // تبديل الأقسام
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelectorAll('.menu a').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                this.classList.add('active');
+                
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // عد تنازلي للحلقة القادمة
+        function updateCountdown() {
+            const now = new Date();
+            const targetDate = new Date('August 5, 2025 18:00:00');
+            const diff = targetDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // تأثير الجسيمات الخلفية
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#1DB954"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#1DB954",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
