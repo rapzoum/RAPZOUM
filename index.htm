@@ -502,6 +502,63 @@
             font-size: 0.8rem;
         }
         
+        /* أنماط المنشور المدمج */
+        .instagram-post {
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .post-header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+        
+        .post-username {
+            font-weight: 500;
+        }
+        
+        .post-container {
+            position: relative;
+            padding-bottom: 125%; /* نسبة 4:5 */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .post-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .post-caption {
+            padding: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem 1rem;
+            color: var(--light-text);
+            font-size: 0.8rem;
+        }
+        
         /* تصميم متجاوب لجميع الشاشات */
         @media (max-width: 1600px) {
             .container {
@@ -847,12 +904,25 @@
                 
                 <div class="news-grid">
                     <div class="news-card">
-                        <img src="https://via.placeholder.com/600x400" alt="خبر 1" class="news-image">
-                        <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
-                        <div class="news-content">
-                            <h3 class="news-title">لسا مفيش اخبار</h3>
-                            <p class="news-excerpt">لسا مفيش اخبار              ...</p>
-                            <div class="news-date">لسا مفيش اخبار </div>
+                        <div class="instagram-post">
+                            <div class="post-header">
+                                <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum" class="post-avatar">
+                                <span class="post-username">rap_zoum</span>
+                            </div>
+                            
+                            <div class="post-container">
+                                <iframe class="post-iframe" src="https://www.instagram.com/p/DNBLXNYt3Lq/embed" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            
+                            <div class="post-caption">
+                                أخبار ساخنة من عالم الراب! تابعونا لمزيد من التحديثات الحصرية.
+                            </div>
+                            
+                            <div class="post-meta">
+                                <span><i class="far fa-heart"></i> 7</span>
+                                <span><i class="far fa-comment"></i> 5</span>
+                                <span><i class="far fa-bookmark"></i> حفظ</span>
+                            </div>
                         </div>
                     </div>
                     
@@ -1095,6 +1165,3 @@
     </script>
 </body>
 </html>
-<div class="next-episode">
-    <i class="fas fa-clock"></i> الحلقة القادمة: الثلاثاء 12 أغسطس 2025 - 6:00 مساءً
-</div>
