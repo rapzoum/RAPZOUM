@@ -627,92 +627,6 @@
                 padding: 1.5rem;
             }
         }
-
-        /* أنماط نموذج الاشتراك */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            background-color: #181818;
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--light-text);
-        }
-        
-        .close-modal:hover {
-            color: var(--accent-color);
-        }
-        
-        /* أنميشن للإشعارات */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(20px); }
-        }
-        
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #1DB954;
-            color: #000;
-            padding: 15px 20px;
-            border-radius: 8px;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            animation: fadeIn 0.3s ease-out;
-            font-weight: bold;
-        }
-
-        /* أنماط زر الإشتراك العائم */
-        .subscribe-fab {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
-            background-color: var(--accent-color);
-            color: #000;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4);
-            z-index: 999;
-            transition: all 0.3s ease;
-        }
-        
-        .subscribe-fab:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(29, 185, 84, 0.6);
-        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -720,32 +634,6 @@
     <!-- تأثيرات الجسيمات الخلفية -->
     <div class="particles" id="particles-js"></div>
     <div class="gradient-overlay"></div>
-    
-    <!-- زر الاشتراك العائم -->
-    <div class="subscribe-fab" id="subscribe-fab">
-        <i class="fas fa-bell"></i>
-    </div>
-    
-    <!-- نموذج الاشتراك -->
-    <div id="subscribe-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3 style="margin-bottom: 1.5rem; text-align: center;">اشترك ليصلك كل جديد</h3>
-            <form id="subscribe-form">
-                <div class="form-group">
-                    <label for="subscriber-name">اسمك الكريم</label>
-                    <input type="text" id="subscriber-name" placeholder="ادخل اسمك هنا" required>
-                </div>
-                <div class="form-group">
-                    <label for="subscriber-email">بريدك الإلكتروني</label>
-                    <input type="email" id="subscriber-email" placeholder="ادخل بريدك الإلكتروني" required>
-                </div>
-                <button type="submit" class="submit-btn" style="width: 100%;">
-                    <i class="fas fa-bell"></i> اشترك الآن
-                </button>
-            </form>
-        </div>
-    </div>
     
     <div class="container">
         <!-- الشريط الجانبي -->
@@ -962,7 +850,7 @@
                         <img src="https://via.placeholder.com/600x400" alt="خبر 1" class="news-image">
                         <img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum Small Logo" class="small-logo">
                         <div class="news-content">
-                            <h3 class="news-title">استرو و ميرو vs بيرلو و فيكتور</h3>
+                            <h3 class="news-title">لسا مفيش اخبار</h3>
                             <p class="news-excerpt">لسا مفيش اخبار              ...</p>
                             <div class="news-date">لسا مفيش اخبار </div>
                         </div>
@@ -997,25 +885,25 @@
                 </div>
                 
                 <div class="contact-container">
-                    <form class="contact-form" id="contact-form">
+                    <form class="contact-form">
                         <div class="form-group">
                             <label for="name">اسم الكريم</label>
-                            <input type="text" id="name" placeholder="ادخل اسمك هنا" required>
+                            <input type="text" id="name" placeholder="ادخل اسمك هنا">
                         </div>
                         
                         <div class="form-group">
                             <label for="email">البريدك الإلكتروني</label>
-                            <input type="email" id="email" placeholder="ادخل بريدك الإلكتروني" required>
+                            <input type="email" id="email" placeholder="ادخل بريدك الإلكتروني">
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">رابر و بروديوسر</label>
-                            <input type="text" id="subject" placeholder="موضوع الرسالة" required>
+                            <input type="text" id="subject" placeholder="موضوع الرسالة">
                         </div>
                         
                         <div class="form-group">
                             <label for="message">رسالتك</label>
-                            <textarea id="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+                            <textarea id="message" placeholder="اكتب رسالتك هنا..."></textarea>
                         </div>
                         
                         <button type="submit" class="submit-btn">
@@ -1027,8 +915,8 @@
                         <div style="margin-bottom: 2rem;">
                             <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">تواصل معنا مباشرة</h3>
                             <div class="contact-methods">
-                                <a href="mailto:rapzoum@gmail.com" class="contact-method">
-                                    <i class="fas fa-envelope"></i> rapzoum@gmail.com
+                                <a href="mailto:rapzoum@example.com" class="contact-method">
+                                    <i class="fas fa-envelope"></i> rapzoum@example.com
                                 </a>
                                 <a href="tel:+20123456789" class="contact-method">
                                     <i class="fas fa-phone"></i> 
@@ -1047,103 +935,6 @@
     <!-- مكتبات JavaScript -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // نظام الاشتراكات والإشعارات
-        let subscribers = JSON.parse(localStorage.getItem('rapzoum_subscribers')) || [];
-
-        // عرض نموذج الاشتراك بعد 10 ثواني من تحميل الصفحة
-        setTimeout(() => {
-            if (!localStorage.getItem('rapzoum_subscribed')) {
-                document.getElementById('subscribe-modal').style.display = 'flex';
-            }
-        }, 10000);
-
-        // فتح/إغلاق نموذج الاشتراك
-        document.getElementById('subscribe-fab').addEventListener('click', () => {
-            document.getElementById('subscribe-modal').style.display = 'flex';
-        });
-
-        document.querySelector('.close-modal').addEventListener('click', () => {
-            document.getElementById('subscribe-modal').style.display = 'none';
-        });
-
-        // معالجة الاشتراك
-        document.getElementById('subscribe-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('subscriber-name').value;
-            const email = document.getElementById('subscriber-email').value;
-            
-            // التحقق من أن البريد غير مشترك مسبقا
-            if (subscribers.some(sub => sub.email === email)) {
-                showNotification('أنت مشترك بالفعل! شكرا لمتابعتك.');
-                return;
-            }
-            
-            // إضافة المشترك الجديد
-            subscribers.push({ 
-                name, 
-                email, 
-                subscribedAt: new Date(),
-                notificationsEnabled: true
-            });
-            
-            localStorage.setItem('rapzoum_subscribers', JSON.stringify(subscribers));
-            localStorage.setItem('rapzoum_subscribed', 'true');
-            
-            // إرسال تفاصيل المشترك إلى البريد الإلكتروني
-            sendSubscriptionDetails(name, email);
-            
-            // إغلاق النموذج وإظهار رسالة تأكيد
-            document.getElementById('subscribe-modal').style.display = 'none';
-            showNotification('تم اشتراكك بنجاح! سيصلك إشعار عند نشر أي محتوى جديد.');
-        });
-
-        // وظيفة إرسال تفاصيل المشترك إلى البريد الإلكتروني
-        function sendSubscriptionDetails(name, email) {
-            const subject = 'اشتراك جديد في راب زوم';
-            const body = `اسم المشترك: ${name}\nالبريد الإلكتروني: ${email}\nتاريخ الاشتراك: ${new Date().toLocaleString()}`;
-            
-            // يمكن استبدال هذا بطلب AJAX إلى سيرفر لإرسال البريد
-            console.log('إرسال تفاصيل المشترك:', {subject, body});
-            
-            // محاكاة إرسال البريد
-            setTimeout(() => {
-                console.log('تم إرسال تفاصيل المشترك إلى rapzoum@gmail.com');
-            }, 1000);
-        }
-
-        // وظيفة لعرض إشعار في الصفحة
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'fadeOut 0.3s ease-out';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        // معالجة نموذج التواصل
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            const mailtoLink = `mailto:rapzoum@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`اسم المرسل: ${name}\nبريد المرسل: ${email}\n\n${message}`)}`;
-            window.open(mailtoLink);
-            
-            showNotification('شكرا لك! تم إرسال رسالتك بنجاح.');
-            this.reset();
-        });
-
         // تبديل الأقسام
         document.querySelectorAll('.menu a').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -1301,36 +1092,9 @@
             },
             "retina_detect": true
         });
-
-        // يمكنك استدعاء هذه الوظيفة عند نشر منشور جديد من لوحة التحكم
-        function notifySubscribersForNewPost(title, type) {
-            const subject = `محتوى جديد في راب زوم: ${title}`;
-            const body = `مرحبا!\n\nتم نشر ${type} جديد بعنوان "${title}"\n\nيمكنك مشاهدته الآن على موقع راب زوم.\n\nمع تحيات فريق راب زوم`;
-            
-            // إرسال إشعار لكل مشترك
-            subscribers.forEach(subscriber => {
-                if (subscriber.notificationsEnabled) {
-                    sendEmailNotification(subscriber.email, subject, body);
-                }
-            });
-            
-            showNotification(`تم إرسال إشعار إلى ${subscribers.length} مشترك حول ${type} الجديد`);
-        }
-
-        // محاكاة إرسال بريد إلكتروني
-        function sendEmailNotification(email, subject, body) {
-            console.log(`إرسال إشعار إلى: ${email}`);
-            console.log(`الموضوع: ${subject}`);
-            console.log(`المحتوى: ${body}`);
-            
-            // في تطبيق حقيقي، هنا ستستخدم خدمة إرسال بريد إلكتروني
-            // مثل EmailJS أو إرسال إلى سيرفرك الخاص
-            
-            // محاكاة الإرسال
-            setTimeout(() => {
-                console.log(`تم إرسال الإشعار إلى ${email}`);
-            }, 500);
-        }
     </script>
 </body>
 </html>
+<div class="next-episode">
+    <i class="fas fa-clock"></i> الحلقة القادمة: الثلاثاء 12 أغسطس 2025 - 6:00 مساءً
+</div>
