@@ -956,25 +956,29 @@
                 </div>
                 
                 <div class="contact-container">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" action="https://formsubmit.co/rapzoum@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="طلب جديد من موقع راب زوم">
+                        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+                        
                         <div class="form-group">
                             <label for="name">اسم المشارك</label>
-                            <input type="text" id="name" placeholder="ادخل اسمك هنا">
+                            <input type="text" id="name" name="name" placeholder="ادخل اسمك هنا" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">البريد الإلكتروني</label>
-                            <input type="email" id="email" placeholder="ادخل بريدك الإلكتروني">
+                            <input type="email" id="email" name="email" placeholder="ادخل بريدك الإلكتروني" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">لينك الانستقرام او ميم الانستقرام</label>
-                            <input type="text" id="subject" placeholder="لينك الانستقرام او ميم الانستقرام">
+                            <input type="text" id="subject" name="instagram_link" placeholder="لينك الانستقرام او ميم الانستقرام" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">للتواصل معنا للمشاركه</label>
-                            <textarea id="message" placeholder="اكتب رسالتك هنا..."></textarea>
+                            <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
                         </div>
                         
                         <button type="submit" class="submit-btn">
@@ -1168,9 +1172,18 @@
         });
 
         // إرسال النموذج
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('سيتم الرد خلال 48 ساعه');
+            
+            // يمكنك هنا إضافة أي تحقق إضافي تريده قبل الإرسال
+            
+            // عرض رسالة للمستخدم
+            alert('سيتم الرد خلال 48 ساعة');
+            
+            // إرسال النموذج فعليًا
+            this.submit();
+            
+            // إعادة تعيين النموذج
             this.reset();
         });
     </script>
