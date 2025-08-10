@@ -956,25 +956,25 @@
                 </div>
                 
                 <div class="contact-container">
-                    <form class="contact-form">
+                    <form class="contact-form" id="contactForm">
                         <div class="form-group">
                             <label for="name">اسم الكريم</label>
-                            <input type="text" id="name" placeholder="ادخل اسمك هنا">
+                            <input type="text" id="name" placeholder="ادخل اسمك هنا" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">البريدك الإلكتروني</label>
-                            <input type="email" id="email" placeholder="ادخل بريدك الإلكتروني">
+                            <input type="email" id="email" placeholder="ادخل بريدك الإلكتروني" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">رابر و بروديوسر</label>
-                            <input type="text" id="subject" placeholder="موضوع الرسالة">
+                            <input type="text" id="subject" placeholder="موضوع الرسالة" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">رسالتك</label>
-                            <textarea id="message" placeholder="اكتب رسالتك هنا..."></textarea>
+                            <textarea id="message" placeholder="اكتب رسالتك هنا..." required></textarea>
                         </div>
                         
                         <button type="submit" class="submit-btn">
@@ -1162,6 +1162,35 @@
                 }
             },
             "retina_detect": true
+        });
+
+        // إرسال الرسالة إلى إنستجرام
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // جمع بيانات النموذج
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // إنشاء نص الرسالة
+            const fullMessage = `اسم المرسل: ${name}\nالبريد الإلكتروني: ${email}\nالموضوع: ${subject}\nالرسالة: ${message}`;
+            
+            // ترميز الرسالة لرابط URL
+            const encodedMessage = encodeURIComponent(fullMessage);
+            
+            // رابط إنستجرام مع معرف الحساب
+            const instagramUrl = `https://www.instagram.com/rapzoum?igsh=cGoyMHI3bWdvb29l`;
+            
+            // فتح رابط إنستجرام في نافذة جديدة
+            window.open(instagramUrl, '_blank');
+            
+            // إظهار رسالة تأكيد
+            alert('سيتم توجيهك إلى صفحة إنستجرام لإرسال رسالتك. شكراً لتواصلك معنا!');
+            
+            // إعادة تعيين النموذج
+            this.reset();
         });
     </script>
 </body>
