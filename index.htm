@@ -956,29 +956,29 @@
                 </div>
                 
                 <div class="contact-container">
-                    <form class="contact-form">
+                    <form class="contact-form" id="contactForm">
                         <div class="form-group">
-                            <label for="name">اسم الكريم</label>
+                            <label for="name">اسم المشارك</label>
                             <input type="text" id="name" placeholder="ادخل اسمك هنا">
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">البريدك الإلكتروني</label>
+                            <label for="email">البريد الإلكتروني</label>
                             <input type="email" id="email" placeholder="ادخل بريدك الإلكتروني">
                         </div>
                         
                         <div class="form-group">
-                            <label for="subject">رابر و بروديوسر</label>
-                            <input type="text" id="subject" placeholder="موضوع الرسالة">
+                            <label for="subject">لينك الانستقرام او ميم الانستقرام</label>
+                            <input type="text" id="subject" placeholder="لينك الانستقرام او ميم الانستقرام">
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">رسالتك</label>
+                            <label for="message">للتواصل معنا للمشاركه</label>
                             <textarea id="message" placeholder="اكتب رسالتك هنا..."></textarea>
                         </div>
                         
                         <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                            <i class="fas fa-paper-plane"></i> ارسال طلب
                         </button>
                     </form>
                     
@@ -986,14 +986,17 @@
                         <div style="margin-bottom: 2rem;">
                             <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">تواصل معنا مباشرة</h3>
                             <div class="contact-methods">
-                                <a href="mailto:rapzoum@example.com" class="contact-method">
-                                    <i class="fas fa-envelope"></i> rapzoum@example.com
+                                <a href="mailto:rapzoum@gmail.com" class="contact-method">
+                                    <i class="fas fa-envelope"></i> rapzoum@gmail.com
                                 </a>
-                                <a href="tel:+20123456789" class="contact-method">
-                                    <i class="fas fa-phone"></i> 
+                                <a href="https://www.instagram.com/rapzoum?igsh=cGoyMHI3bWdvb29l" class="contact-method">
+                                    <i class="fab fa-instagram"></i> انستجرام
                                 </a>
-                                <a href="https://www.whatsapp.com/channel/0029VbBVaT6F6smtLJQZo73r" class="contact-method">
-                                    <i class="fab fa-whatsapp"></i> واتساب
+                                <a href="https://www.tiktok.com/@rap_zoum?_t=ZS-8yf2pXBfpDE&_r=1" class="contact-method">
+                                    <i class="fab fa-tiktok"></i> تيك توك
+                                </a>
+                                <a href="https://youtube.com/@rapzoum?si=6pNTZUqKWrG8ODwZ" class="contact-method">
+                                    <i class="fab fa-youtube"></i> يوتيوب
                                 </a>
                             </div>
                         </div>
@@ -1163,11 +1166,13 @@
             },
             "retina_detect": true
         });
+
+        // إرسال النموذج
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('سيتم الرد خلال 48 ساعه');
+            this.reset();
+        });
     </script>
 </body>
 </html>
-<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/ZnMcH4TR/20250729-211040-1-1.jpg">
-<img src="https://i.postimg.cc/6TJ1kQry/20250729-211040-1.jpg" alt="Rap Zoum" class="reel-avatar">
-<div class="next-episode">
-    <i class="fas fa-clock"></i> الحلقة القادمة: الثلاثاء 12 أغسطس 2025 - 6:00 مساءً
-</div>
